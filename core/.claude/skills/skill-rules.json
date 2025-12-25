@@ -1,0 +1,117 @@
+{
+    "version": "1.0",
+    "description": "Core skills auto-activation rules. Suggests skills based on prompt or file context.",
+    "skills": {
+        "git-commit-helper": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "medium",
+            "description": "Git diff analysis based commit message generation",
+            "promptTriggers": {
+                "keywords": [
+                    "commit message",
+                    "git commit",
+                    "write commit",
+                    "create commit",
+                    "make commit"
+                ],
+                "intentPatterns": [
+                    "commit.*(message|write|create)",
+                    "(change|modify).*(commit)"
+                ]
+            }
+        },
+        "webapp-testing": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Playwright-based webapp testing and screenshots",
+            "promptTriggers": {
+                "keywords": [
+                    "playwright",
+                    "browser test",
+                    "e2e test",
+                    "screenshot",
+                    "web test",
+                    "ui test",
+                    "page test",
+                    "screen capture"
+                ],
+                "intentPatterns": [
+                    "(browser|screen|page).*(test|check|capture)",
+                    "screenshot.*(take|capture|save)",
+                    "e2e.*(test|verify)"
+                ]
+            }
+        },
+        "artifacts-builder": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "medium",
+            "description": "React/Tailwind/shadcn based HTML artifact generation",
+            "promptTriggers": {
+                "keywords": [
+                    "artifact",
+                    "html artifact",
+                    "component preview",
+                    "preview",
+                    "interactive html"
+                ],
+                "intentPatterns": [
+                    "artifact.*(create|build|make)",
+                    "(component|ui).*(preview)"
+                ]
+            }
+        },
+        "docx": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "medium",
+            "description": "Word document (.docx) creation and editing",
+            "promptTriggers": {
+                "keywords": [
+                    "docx",
+                    "word document",
+                    "create document",
+                    "make document",
+                    ".docx",
+                    "word file"
+                ],
+                "intentPatterns": [
+                    "(word|docx).*(document|file).*(create|make|write)",
+                    "document.*(export)"
+                ]
+            }
+        },
+        "skill-creator": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "low",
+            "description": "Guide for creating new Claude Code skills",
+            "promptTriggers": {
+                "keywords": [
+                    "create skill",
+                    "make skill",
+                    "new skill",
+                    "add skill"
+                ],
+                "intentPatterns": [
+                    "(skill).*(create|make|add|develop)"
+                ]
+            }
+        }
+    },
+    "notes": {
+        "enforcement_types": {
+            "suggest": "Skill suggestion is displayed but does not block execution",
+            "block": "Progress only after skill is used (guardrail)",
+            "warn": "Display warning but allow progress"
+        },
+        "priority_levels": {
+            "critical": "Highest - always trigger on match",
+            "high": "Important - trigger on most matches",
+            "medium": "Normal - trigger on clear matches only",
+            "low": "Optional - trigger on explicit matches only"
+        }
+    }
+}
